@@ -1,0 +1,17 @@
+Intialize counter for number of persons inside the room as zero.
+Make the pins to which the two light sensors connected as input.
+Make the pin to which the relay connected as output and output zero to the pin to turn off relay initially (Assuming no one in the room.).
+Enable INT1 and INT2 interrupts.
+Wait for interrupt ie. for signal at INT1 or INT2 pins representing entrance or departure.
+
+When a person enters the room, INT1 is received:
+	Increment the counter.
+	If counter is greater than 1 ie. if there is atleast one person in the room, turn on the relay to turn on lights.
+	Clear INT1 flag.
+	Return to wait state.
+	
+When a person leaves the room, INT2 is received:
+	If counter is greater than zero ie. if there was atleast one person in the room, decrement the counter.
+	If counter is equal to zero ie. if there is no one left in the room, turn off the relay to turn off lights.
+	Clear INT2 flag.
+	Return to wait state.
